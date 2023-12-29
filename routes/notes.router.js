@@ -54,25 +54,6 @@ notes.put("/notes/:id", async (req, res) => {
   }
 });
 
-// notes.get("/notes/:page", async (req, res) => {
-//   const { page } = req.params;
-//   const { authorId } = req.body;
-//   const limit = 3;
-//   let skipped = (page - 1) * limit;
-
-//   const note = await NoteModel.find({ authorId });
-
-//   if (note.length==0) {
-//     res.status(404).send("Note not found");
-//   } else {
-//     console.log(note)
-//     let data = await NoteModel.find({ authorId })
-//       .skip(skipped)
-//       .limit(limit);
-//     res.json({ notes: data });
-//   }
-// });
-
 module.exports = {
   notes,
 };
