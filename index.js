@@ -9,9 +9,13 @@ require("dotenv").config();
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use("/", route);
+app.use("/",(req,res)=>{
+  res.send("home Page")
+})
+
+app.use("/user", route);
 app.use(auth);
-app.use("/", notes);
+app.use("/note", notes);
 const PORT = process.env.port;
 
 app.listen(PORT, async () => {
