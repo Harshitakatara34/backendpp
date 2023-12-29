@@ -5,14 +5,11 @@ const notes = express.Router();
 notes.post("/create", async (req, res) => {
   try {
     const { title, description } = req.body;
-
-    // Assuming req.user._id is set by the auth middleware
     const newNote = new NoteModel({
       title,
       description,
       userId: req.user.userId,
     });
-
     const savedNote = await newNote.save();
     res.status(201).json(savedNote);
   } catch (error) {

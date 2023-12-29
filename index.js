@@ -9,18 +9,24 @@ require("dotenv").config();
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// Apply middleware for user route
 app.use("/", route);
+
+// Apply auth middleware for all routes below this line
 app.use(auth);
+
+// Apply middleware for notes route
 app.use("/", notes);
-const PORT = process.env.port;
+
+const PORT = process.env.port || 3000;
 
 app.listen(PORT, async () => {
-    console.log(PORT)
+  console.log(`Server is running on port ${PORT}`);
   try {
     await connection;
-    console.log("connected");
+    console.log("Connected to the database");
   } catch (error) {
     console.log(error);
   }
-  console.log("connected to db");
 });

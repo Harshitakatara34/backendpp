@@ -4,7 +4,6 @@ const auth = (req, res, next) => {
   const token = req.headers.authorization;
   console.log(req.headers);
   console.log(token);
-
   if (token) {
     try {
       const decode = jwt.verify(token, "harshi");
@@ -12,6 +11,7 @@ const auth = (req, res, next) => {
 
       if (decode) {
         console.log(req.body);
+        console.log(decode)
         req.user = decode;
         console.log(req.user);
         next();
